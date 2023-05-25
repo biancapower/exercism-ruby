@@ -1,17 +1,17 @@
 class LogLineParser
   def initialize(line)
-    @line = line
+    @log_level, @message = line.split(': ')
   end
 
   def message
-    raise 'Please implement the LogLineParser#message method'
+    @message.strip
   end
 
   def log_level
-    raise 'Please implement the LogLineParser#log_level method'
+    @log_level[1...-1].downcase
   end
 
   def reformat
-    raise 'Please implement the LogLineParser#reformat method'
+    "#{message} (#{log_level})"
   end
 end
